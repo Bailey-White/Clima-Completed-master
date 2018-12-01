@@ -457,17 +457,9 @@ public class WeatherController extends AppCompatActivity {
         // Initialize the TimerTask's job
         initializeTimerTask();
 
-        //schedule the timer, after the first 5000ms the TimerTask will run every 10000ms
+        //schedule the timer, after the first 600000ms the TimerTask will run every 600000ms
         timer.schedule(timerTask, 60000, 60000);
 
-    }
-
-    public void stoptimertask(View v) {
-        //stop the timer, if it's not already null
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
-        }
     }
 
     public void initializeTimerTask(){
