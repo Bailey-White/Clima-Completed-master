@@ -28,8 +28,10 @@ public class WeatherDataModel {
             double tempResult = jsonObject.getJSONObject("main").getDouble("temp") - 273.15;
             int roundedValue = (int) Math.rint(tempResult);
 
+
             weatherData.mTemperature = Integer.toString(roundedValue);
 
+            // Gets the longitude from the Json Response
             weatherData.mLong = jsonObject.getJSONObject("coord").getDouble("lon");
 
             return weatherData;

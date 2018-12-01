@@ -106,22 +106,28 @@ public class WeatherController extends AppCompatActivity {
         // Can write: mCityLabel = findViewById(R.id.locationTV);
         // Instead of: mCityLabel = (TextView) findViewById(R.id.locationTV);
 
+        // Finds the changeCityButton
+        ImageButton changeCityButton = findViewById(R.id.changeCityButton);
+
+        // Finds the top left TVs in weather_controller_layout
         mCityLabel = findViewById(R.id.locationTV);
         mWeatherImage = findViewById(R.id.weatherSymbolIV);
         mTemperatureLabel = findViewById(R.id.tempTV);
         mTimeLabel = findViewById(R.id.timeTV);
-        ImageButton changeCityButton = findViewById(R.id.changeCityButton);
 
+        // Finds the top right TVs in weather_controller_layout
         mCityLabel1 = findViewById(R.id.locationTV1);
         mWeatherImage1= findViewById(R.id.weatherSymbolIV1);
         mTemperatureLabel1 = findViewById(R.id.tempTV1);
         mTimeLabel1 = findViewById(R.id.timeTV1);
 
+        // Finds the bottom left TVs in weather_controller_layout
         mCityLabel2 = findViewById(R.id.locationTV2);
         mWeatherImage2 = findViewById(R.id.weatherSymbolIV2);
         mTemperatureLabel2 = findViewById(R.id.tempTV2);
         mTimeLabel2 = findViewById(R.id.timeTV2);
 
+        // Finds the bottom right TVs in weather_controller_layout
         mCityLabel3 = findViewById(R.id.locationTV3);
         mWeatherImage3 = findViewById(R.id.weatherSymbolIV3);
         mTemperatureLabel3 = findViewById(R.id.tempTV3);
@@ -321,7 +327,7 @@ public class WeatherController extends AppCompatActivity {
             // Sets time to the time at 0 longitude
             time += 12600000;
 
-            // Sets time zone for each location
+            // Sets time zone for each location every 7.5 degrees is half a hour
             int timeZoneNum = (int) (lon / 7.5);
 
             // Checks to see if we add or subtract time zone
@@ -478,9 +484,6 @@ public class WeatherController extends AppCompatActivity {
             }
         };
     }
-
-
-
 
     }
 
