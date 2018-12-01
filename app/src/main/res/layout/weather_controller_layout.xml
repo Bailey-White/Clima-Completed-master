@@ -28,60 +28,6 @@
         android:layout_width="172dp"
         android:layout_height="209dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp">
-
-        <TextView
-            android:id="@+id/locationTV"
-            android:layout_width="236dp"
-            android:layout_height="29dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="31dp"
-            android:text="@string/default_location"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
-
-        <TextView
-            android:id="@+id/timeTV"
-            android:layout_width="191dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp"
-            android:text="@string/default_time"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
-
-        <TextView
-            android:id="@+id/tempTV"
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="31dp"
-            android:layout_marginRight="31dp"
-            android:layout_marginBottom="-38dp"
-            android:text="@string/default_temp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
-
-        <ImageView
-            android:id="@+id/weatherSymbolIV"
-            android:layout_width="114dp"
-            android:layout_height="104dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="25dp"
-            android:contentDescription="@string/weather_description"
-            app:srcCompat="@drawable/dunno" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="172dp"
-        android:layout_height="209dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="69dp"
         android:layout_marginEnd="0dp">
@@ -133,6 +79,60 @@
             android:contentDescription="@string/weather_description"
             app:srcCompat="@drawable/dunno" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="172dp"
+        android:layout_height="209dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:id="@+id/locationTV"
+            android:layout_width="236dp"
+            android:layout_height="29dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="31dp"
+            android:text="@string/default_location"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
+
+        <TextView
+            android:id="@+id/timeTV"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:text="@string/default_time"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
+
+        <TextView
+            android:id="@+id/tempTV"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:layout_marginBottom="-38dp"
+            android:text="@string/default_temp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse" />
+
+        <ImageView
+            android:id="@+id/weatherSymbolIV"
+            android:layout_width="114dp"
+            android:layout_height="104dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="25dp"
+            android:contentDescription="@string/weather_description"
+            app:srcCompat="@drawable/dunno" />
     </RelativeLayout>
 
     <RelativeLayout

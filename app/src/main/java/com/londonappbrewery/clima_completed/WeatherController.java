@@ -76,7 +76,6 @@ public class WeatherController extends AppCompatActivity {
     double lonOfCity2;
     double lonOfCity3;
 
-
     TextView mCityLabel1;
     ImageView mWeatherImage1;
     TextView mTemperatureLabel1;
@@ -195,6 +194,8 @@ public class WeatherController extends AppCompatActivity {
                 Log.d(LOGCAT_TAG, "onLocationChanged() callback received");
                 String longitude = String.valueOf(location.getLongitude());
                 String latitude = String.valueOf(location.getLatitude());
+
+                // Gets time from the computer for later use
                 timeFromComp = location.getTime();
 
 
@@ -313,82 +314,129 @@ public class WeatherController extends AppCompatActivity {
     // Updates the Local time
     private String setTime(Double lon,Long time){
         SimpleDateFormat timeAtLoc = new SimpleDateFormat("hh:mm a");
-        time += 12600000;
 
-        int timeZoneNum = (int) (lon / 7.5);
+        // Check to see if the computer time is past 9:30
+        // If past 9:30 don't add time to get to 0 longitude
+        if(time < 77400000){
+            // Sets time to the time at 0 longitude
+            time += 12600000;
 
-        if(timeZoneNum < 0){
-            time = time + (timeZoneNum * 1800000);
+            // Sets time zone for each location
+            int timeZoneNum = (int) (lon / 7.5);
+
+            // Checks to see if we add or subtract time zone
+            if(timeZoneNum < 0){
+                time = time + (timeZoneNum * 1800000);
+            }
+            else{
+                time = time - (timeZoneNum * 1800000);
+            }
+
+            // Sets the new time to a readable format
+            String timeZone = timeAtLoc.format(time);
+            startTimer();
+            return timeZone;
         }
         else{
-            time = time - (timeZoneNum * 1800000);
-        }
+            // Sets time zone for each location
+            int timeZoneNum = (int) (lon / 7.5);
 
-        String timeZone = timeAtLoc.format(time);
-        startTimer();
-        return timeZone;
+            // Checks to see if we add or subtract time zone
+            if(timeZoneNum < 0){
+                time = time + (timeZoneNum * 1800000);
+            }
+            else{
+                time = time - (timeZoneNum * 1800000);
+            }
+
+            // Sets the new time to a readable format
+            String timeZone = timeAtLoc.format(time);
+            startTimer();
+            return timeZone;
+        }
     }
 
 
     // Updates the information shown on screen.
     private void updateUI(WeatherDataModel weather) {
+        // Check to see which labels to change
         if(timesCityChanged == 0){
+            // Sets each Label with appropriate text
             mTemperatureLabel.setText(weather.getTemperature());
             mCityLabel.setText(weather.getCity());
             // Update the icon based on the resource id of the image in the drawable folder.
             int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
             mWeatherImage.setImageResource(resourceID);
 
+            // Sets the longitude for the timer function
             lonOfCity = weather.getLongitude();
             mTimeLabel.setText(setTime(weather.getLongitude(), timeFromComp));
 
+            // Sets the variable to check which label to change
             timesCityChanged = 1;
+            // Checks to see if the app just started
             if(startUpCount == 0 ){
-                getWeatherForNewCity("Brampton");
+                getWeatherForNewCity("Corner Brook");
             }
 
         }
+        // Check to see which labels to change
         else if(timesCityChanged == 1){
+            // Sets each Label with appropriate text
             mTemperatureLabel1.setText(weather.getTemperature());
             mCityLabel1.setText(weather.getCity());
             // Update the icon based on the resource id of the image in the drawable folder.
             int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
             mWeatherImage1.setImageResource(resourceID);
 
+            // Sets the longitude for the timer function
             lonOfCity1 = weather.getLongitude();
             mTimeLabel1.setText(setTime(weather.getLongitude(), timeFromComp));
+
+            // Sets the variable to check which label to change
             timesCityChanged = 2;
+            // Checks to see if the app just started
             if(startUpCount == 0){
-                getWeatherForNewCity("Corner Brook");
+                getWeatherForNewCity("Brampton");
             }
 
         }
+        // Check to see which labels to change
         else if(timesCityChanged == 2){
+            // Sets each Label with appropriate text
             mTemperatureLabel2.setText(weather.getTemperature());
             mCityLabel2.setText(weather.getCity());
             // Update the icon based on the resource id of the image in the drawable folder.
             int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
             mWeatherImage2.setImageResource(resourceID);
 
+            // Sets the longitude for the timer function
             lonOfCity2 = weather.getLongitude();
             mTimeLabel2.setText(setTime(weather.getLongitude(), timeFromComp));
-            timesCityChanged = 3;
 
+            // Sets the variable to check which label to change
+            timesCityChanged = 3;
+            // Checks to see if the app just started
             if(startUpCount == 0){
                 getWeatherForNewCity("London");
                 startUpCount += 1;
             }
 
         }
+        // Check to see which labels to change
         else if(timesCityChanged == 3){
+            // Sets each Label with appropriate text
             mTemperatureLabel3.setText(weather.getTemperature());
             mCityLabel3.setText(weather.getCity());
             // Update the icon based on the resource id of the image in the drawable folder.
             int resourceID = getResources().getIdentifier(weather.getIconName(), "drawable", getPackageName());
             mWeatherImage3.setImageResource(resourceID);
 
+            // Sets the longitude for the timer function
             lonOfCity3 = weather.getLongitude();
             mTimeLabel3.setText(setTime(weather.getLongitude(), timeFromComp));
+
+            // Sets the variable to check which label to change
             timesCityChanged = 1;
         }
 
@@ -426,7 +474,9 @@ public class WeatherController extends AppCompatActivity {
         timerTask = new TimerTask() {
             @Override
             public void run() {
+                // Adds a 1/4 of a minute to the time from the computer because it gets called 4 times
                 timeFromComp += 15000;
+                // Calls to change the time fields
                 mTimeLabel.setText(setTime(lonOfCity,timeFromComp));
                 mTimeLabel1.setText(setTime(lonOfCity1,timeFromComp));
                 mTimeLabel2.setText(setTime(lonOfCity2,timeFromComp));
@@ -436,6 +486,9 @@ public class WeatherController extends AppCompatActivity {
             }
         };
     }
+
+
+
 
     }
 
